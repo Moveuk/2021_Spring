@@ -1,11 +1,18 @@
+### Workspace ###
+.metadata
+Servers/
+
+### STS ###
+.apt_generated
 .classpath
+.factorypath
 .project
 .settings/
+.springBeans
+.sts4-cache
+.class
+
+### etc ###
 target/
 build/
 bin/
-.factorypath
-Servers/
-.metadata
-.springBeans
-.class
