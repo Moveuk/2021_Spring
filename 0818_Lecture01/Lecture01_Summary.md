@@ -1,5 +1,5 @@
 # Lecture01 STS
-Key Word : STS 설치
+Key Word : STS 설치, Test Legacy 프로젝트 생성, Could not initialize class  PropertiesConverter & java.lang.ExceptioninitializerError 오류 처리
 
 <hr/>
 
