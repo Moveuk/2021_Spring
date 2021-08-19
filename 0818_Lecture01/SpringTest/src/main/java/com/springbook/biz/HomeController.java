@@ -1,4 +1,4 @@
-package com.ldu.test;
+package com.springbook.biz;
 
 import java.text.DateFormat;
 import java.util.Date;
