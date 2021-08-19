@@ -12,7 +12,7 @@ Learning about basic Spring
 1. 202100818 [Lecture01](https://github.com/Moveuk/2021_Spring/blob/main/0818_Lecture01/Lecture01_Summary.md)    
     Hello Spring : STS 설치, Test Legacy 프로젝트 생성, PropertiesConverter & java.lang.ExceptioninitializerError 오류 처리
 2. 202100819 [Lecture02](https://github.com/Moveuk/2021_Spring/blob/main/0819_Lecture02/Lecture02_Summary.md)     
-    
+    환경 설정, Polymorphism, Injection 주입, Constructor Injection, lazy-init, CollectionBean 활용, Properties 활용
 3. 20210 Lecture03    
 4. 20210 Lecture04   
 5. 20210 Lecture05   
