@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<bean id="tv" class="polymorphsim.SamsungTV">
+
+		<!-- 직접 xml 에 빈값을 넣어 Spring에게 알리는 방식 -->
+	<!-- <bean id="tv" class="polymorphsim.SamsungTV" lazy-init="true">  -->
 		<!-- 매개변수 활용 -->
 		<!-- <constructor-arg ref="apple"></constructor-arg> <constructor-arg value="2700000"></constructor-arg> -->
 
-		<property name="speaker" ref="apple"></property>
+		<!-- Setter 메소드를 이용한 주입(Injection) -->
+		<!-- <property name="speaker" ref="apple"></property>
 		<property name="price" value="2700000"></property>
 	</bean>
 
-	<bean id="sony" class="polymorphsim.SonySpeaker" />
+	<bean id="sony" class="polymorphsim.SonySpeaker" lazy-init="true"/>
 
-	<bean id="apple" class="polymorphsim.AppleSpeaker" />
+	<bean id="apple" class="polymorphsim.AppleSpeaker" lazy-init="true"/> -->
 
+	<bean class="polymorphsim.SonySpeaker" lazy-init="true"/>
 
 	<!-- CollectionBean 사용 -->
 
-	<bean id="collectionBeanList" class="com.springbook.iod.injection.CollectionBean">
+	<!-- <bean id="collectionBeanList" class="com.springbook.iod.injection.CollectionBean">
 		<property name="addressList">
 			<list>
 				<value>서울시 영등포구 여의도동</value>
@@ -55,17 +61,27 @@
 				</entry>
 			</map>
 		</property>
-	</bean>
+	</bean> -->
 
 
 	<!-- Properties 사용 -->
 
-	<bean id="collectionBeanProperties" class="com.springbook.iod.injection.CollectionBean">
+	<!-- <bean id="collectionBeanProperties" class="com.springbook.iod.injection.CollectionBean">
 		<property name="addressProperties">
 			<props>
 				<prop key="고길동">서울시 영등포구 여의도동</prop>
 				<prop key="마이클">서울시 영등포구 영등포본동</prop>
 			</props>
 		</property>
-	</bean>
+	</bean> -->
+	
+	
+	
+	<!-- @annotation을 활용하여 Spring에게 알리는 방식 -->
+	
+	<!-- base-package 패키지 내부의 클래스를 스캔하여 자동으로 등록해줌. -->
+	<context:component-scan base-package="polymorphsim"></context:component-scan>
+	
+	
+	
 </beans>

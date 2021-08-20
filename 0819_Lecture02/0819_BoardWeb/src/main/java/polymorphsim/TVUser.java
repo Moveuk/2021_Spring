@@ -60,7 +60,7 @@ public class TVUser {
 		// Spring Library import 필요
 		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml");
 		
-		TV tv = (SamsungTV) factory.getBean("tv");	// new 객체 생성됨
+		TV tv = (LgTV) factory.getBean("tv");	// new 객체 생성됨
 //		TV tv2 = (SamsungTV) factory.getBean("tv");	// new 객체 생성됨
 //		TV tv3 = (SamsungTV) factory.getBean("tv");	// new 객체 생성됨
 		
