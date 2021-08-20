@@ -3,16 +3,6 @@
 Servers/
 
 ### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings/
-.springBeans
-.sts4-cache
-.class
+target/
 
 ### etc ###
-target/
-build/
-bin/
