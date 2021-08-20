@@ -9,11 +9,12 @@ Learning about basic Spring
 
 
 ## < 목차 >
-1. 202100818 [Lecture01](https://github.com/Moveuk/2021_Spring/blob/main/0818_Lecture01/Lecture01_Summary.md)    
+1. 20210818 [Lecture01](https://github.com/Moveuk/2021_Spring/blob/main/0818_Lecture01/Lecture01_Summary.md)    
     Hello Spring : STS 설치, Test Legacy 프로젝트 생성, PropertiesConverter & java.lang.ExceptioninitializerError 오류 처리
-2. 202100819 [Lecture02](https://github.com/Moveuk/2021_Spring/blob/main/0819_Lecture02/Lecture02_Summary.md)     
+2. 20210819 [Lecture02](https://github.com/Moveuk/2021_Spring/blob/main/0819_Lecture02/Lecture02_Summary.md)     
     환경 설정, Polymorphism, Injection 주입, Constructor Injection, lazy-init, CollectionBean 활용, Properties 활용
-3. 20210 Lecture03    
+3. 20210820 [Lecture03](https://github.com/Moveuk/2021_Spring/blob/main/0820_Lecture03/Lecture03_Summary.md)    
+    @annotation, @Autowired, @qualifier, @Resource, @Service, @Repository, @Controller, Maven 업데이트, 배포할 jar파일 추가, 의존성 주입
 4. 20210 Lecture04   
 5. 20210 Lecture05   
 6. 20210 Lecture06   
