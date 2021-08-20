@@ -376,7 +376,7 @@ public class BoardServiceTest {
 
 
 
-[UserWeb](https://github.com/Moveuk/2021_Spring/blob/main/0819_Lecture03/UserWeb)
+[UserWeb](https://github.com/Moveuk/2021_Spring/tree/main/0820_Lecture03/UserWeb)
 
 
 
