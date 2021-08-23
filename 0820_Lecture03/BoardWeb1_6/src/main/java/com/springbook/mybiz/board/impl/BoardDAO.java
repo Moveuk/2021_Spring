@@ -19,10 +19,10 @@ public class BoardDAO {
 	// 글등록
 	public void insertBoard(BoardVO bVo) {
 		System.out.println("insertBoard() 기능 처리");
-//		String sql = "INSERT INTO board2(seq,title,writer,content) VALUES ((SELECT COUNT(*) FROM board2)+1,?,?,?)";
+//		String sql = "INSERT INTO board1(seq,title,writer,content) VALUES ((SELECT COUNT(*) FROM board1)+1,?,?,?)";
 		// count의 문제점 중간에 데이터가 없어지면 max값과 count값이 달라져서 중복되어 PK에 대한 오류가 발생될 수 있음.
-		String sql = "INSERT INTO board2(seq,title,writer,content)"
-				+ " VALUES ((SELECT nvl(max(seq), 0)+1 FROM board2),?,?,?)";
+		String sql = "INSERT INTO board1(seq,title,writer,content)"
+				+ " VALUES ((SELECT nvl(max(seq), 0)+1 FROM board1),?,?,?)";
 		JDBCUtil ut = new JDBCUtil();
 		
 		try {

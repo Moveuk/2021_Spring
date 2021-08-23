@@ -1,4 +1,4 @@
-create table board2(
+create table board1(
     seq number(5) primary key,
     title varchar2(200),
     writer varchar2(20),
@@ -7,11 +7,15 @@ create table board2(
     cnt number(5) default 0
 );
 
-SELECT count(*) FROM board2;
+SELECT count(*) FROM board1;
 
-INSERT INTO board2(seq,title,writer,content) VALUES ((SELECT COUNT(*) FROM board2)+1,'a','a','a');
+INSERT INTO board1(seq,title,writer,content) VALUES ((SELECT COUNT(*) FROM board1)+1,'a','a','a');
 
-SELECT * FROM board2;
+SELECT * FROM board1;
 
 -- max : null일 때는 max값도 null이 됨.
 SELECT max(seq) FROM board1;
+
+SELECT * FROM board1;
+
+SELECT * FROM board1 ORDER BY seq DESC;
