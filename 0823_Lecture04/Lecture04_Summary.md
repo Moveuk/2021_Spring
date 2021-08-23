@@ -1,5 +1,5 @@
 # Lecture04 BoardWeb에 User 구성, Test13
-Key Word : @annotation, @Autowired, @qualifier, @Resource, @Service, @Repository, @Controller, Maven 업데이트, 배포할 jar파일 추가, 의존성 주입
+Key Word : CRUD 기능 추가, Test13
 
 <hr/>
 
