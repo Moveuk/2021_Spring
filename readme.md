@@ -15,7 +15,8 @@ Learning about basic Spring
     환경 설정, Polymorphism, Injection 주입, Constructor Injection, lazy-init, CollectionBean 활용, Properties 활용
 3. 20210820 [Lecture03](https://github.com/Moveuk/2021_Spring/blob/main/0820_Lecture03/Lecture03_Summary.md)    
     @annotation, @Autowired, @qualifier, @Resource, @Service, @Repository, @Controller, Maven 업데이트, 배포할 jar파일 추가, 의존성 주입
-4. 20210 Lecture04   
+4. 20210823 [Lecture04](https://github.com/Moveuk/2021_Spring/blob/main/0823_Lecture04/Lecture04_Summary.md)   
+    CRUD 기능 추가, Test13
 5. 20210 Lecture05   
 6. 20210 Lecture06   
 7. 20210 Lecture07   
