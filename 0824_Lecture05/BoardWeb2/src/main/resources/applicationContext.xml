@@ -2,11 +2,50 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-<context:component-scan base-package="com.springbook.biz"></context:component-scan>
-	<!-- <bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl" lazy-init="true">
-		<property name="userDAO" ref="userDAO"></property>
-	</bean>
-	<bean id = "userDAO" class="com.springbook.biz.user.impl.UserDAO" lazy-init="true"></bean> -->
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
+
+
+	<!-- <bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl" lazy-init="true"> <property 
+		name="userDAO" ref="userDAO"></property> </bean> <bean id = "userDAO" class="com.springbook.biz.user.impl.UserDAO" 
+		lazy-init="true"></bean> -->
+
+	<!-- aop 등록을 위해 필요한 빈을 만들어 준다. -->
+	<!-- <bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean> -->
+
+	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"></bean>
+	
+	<!-- aop 등록 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut" />
+
+		<aop:aspect ref="before">
+			<aop:before method="beforeLog" pointcut-ref="allPointcut" />
+		</aop:aspect>
+		
+		
+		<!-- <aop:aspect ref="log"> -->
+			<!-- 모든 패키지 biz 내부에 들어있는 Impl로 끝나는 모든 파일들에 대해서 적용 -->
+			<!-- 반환타입(*) 패키지주소.*로끝나는.모든 메소드 -->
+			<!-- <aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut" /> -->
+			<!-- 반환타입(*) 패키지주소.*로끝나는.get으로 끝나는 모든 메소드 -->
+			<!-- <aop:pointcut expression="execution(* com.springbook.biz..*Impl.get*(..))" id="getPointcut"/>
+			<aop:before method="printLogging" pointcut-ref="allPointcut" /> -->
+			<!-- pointcut에 정해준 영역 안에서 printLogging이 시작되기 전(before)에 발생 -->
+			<!-- all에서 get으로 변경해주니 get 메소드만 사후 로깅이 됨.-->
+		<!--<aop:after method="printLoggingAfter" pointcut-ref="getPointcut" />
+		</aop:aspect> -->
+		
+
+	</aop:config>
+	
+	
+	
+	
+	
+	
 </beans>

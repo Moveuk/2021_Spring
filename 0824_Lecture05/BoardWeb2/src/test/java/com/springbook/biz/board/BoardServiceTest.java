@@ -3,6 +3,7 @@ package com.springbook.biz.board;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -35,6 +36,12 @@ public class BoardServiceTest {
 		if (bVo.getContent().isBlank()) bVo.setContent("빈 내용");
 		
 		boardService.insertBoard(bVo);
+		
+		List<BoardVO> boardList = boardService.getBoardList(bVo);
+		for (BoardVO board : boardList) {
+			System.out.println("--->" + board.toString());
+		}
+		
 		factory.close();
 	}
 
