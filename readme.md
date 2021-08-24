@@ -17,8 +17,9 @@ Learning about basic Spring
     @annotation, @Autowired, @qualifier, @Resource, @Service, @Repository, @Controller, Maven 업데이트, 배포할 jar파일 추가, 의존성 주입
 4. 20210823 [Lecture04](https://github.com/Moveuk/2021_Spring/blob/main/0823_Lecture04/Lecture04_Summary.md)   
     CRUD 기능 추가, Test13
-5. 20210 Lecture05   
-6. 20210 Lecture06   
+5. 20210824 [Lecture05](https://github.com/Moveuk/2021_Spring/blob/main/0824_Lecture05/Lecture05_Summary.md)   
+    Test13 리뷰, AOP, 빌드 도구(Maven, Gradle), Log4j, joinpoint, pointcut, advice, Weaving, Aspect, Advisor   
+6. 20210 [Lecture](https://github.com/Moveuk/2021_Spring/blob/main/08_Lecture/Lecture_Summary.md)     
 7. 20210 Lecture07   
 8. 20210 Lecture08   
 9. 20210 Lecture09   
