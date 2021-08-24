@@ -428,7 +428,7 @@ public class BoardServiceImpl implements BoardService {
   - 어드바이스의 동작 시점
     - before : pointcut의 동작 전
     - after : pointcut의 동작 후
-    - after-returning : pointcut이 동작하고 무조건 실행
+    - after-returning : pointcut이 성공적으로 동작하고 리턴되면 실행
     - after-throwing : pointcut이 예외가 발생하면 실행
     - around : pointcut의 동작 전/후
    
