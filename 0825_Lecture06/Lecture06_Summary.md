@@ -1,13 +1,17 @@
-# Lecture05 Test13 리뷰, BoardWeb2
-Key Word : AOP (Aspect Oriented Programming), Bean Braph, XML AOP, @annotation AOP,     
+# Lecture06 BoardWeb2 AOP Aspect
+Key Word : AOP (Aspect Oriented Programming), Bean Braph, XML AOP, @annotation AOP, stopWatch 메소드 실행 시간 파악     
 
 <hr/>
 
  ## 2. 공통 관심사 가지기(Aspect) _ 이어서..
  
+ [BoardWeb2 코드 페이지 이동](https://github.com/Moveuk/2021_Spring/tree/main/0824_Lecture05/BoardWeb2)
+ 
+ <br><hr/>
  
 ### xml 파일 Bean Braph 켜는 법
-   
+ <br>
+ 
 ![image](https://user-images.githubusercontent.com/84966961/130715049-62223f9d-46eb-4413-ab38-ae4b23df77f3.png)   
 
 ![image](https://user-images.githubusercontent.com/84966961/130715058-14551648-e09f-469e-a794-92260e793a56.png)   
@@ -254,44 +258,4 @@ public class AroundAdvice {
 
 <br><br><hr>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br><hr>
 
