@@ -17,35 +17,40 @@
 	<!-- aop 등록을 위해 필요한 빈을 만들어 준다. -->
 	<!-- <bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean> -->
 
-	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"></bean>
+	<!-- <aop:aspect ref="log"> -->
+		<!-- 모든 패키지 biz 내부에 들어있는 Impl로 끝나는 모든 파일들에 대해서 적용 -->
+		<!-- 반환타입(*) 패키지주소.*로끝나는.모든 메소드 -->
+		<!-- <aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut" /> -->
+		<!-- 반환타입(*) 패키지주소.*로끝나는.get으로 끝나는 모든 메소드 -->
+		<!-- <aop:pointcut expression="execution(* com.springbook.biz..*Impl.get*(..))" id="getPointcut"/>
+		<aop:before method="printLogging" pointcut-ref="allPointcut" /> -->
+		<!-- pointcut에 정해준 영역 안에서 printLogging이 시작되기 전(before)에 발생 -->
+		<!-- all에서 get으로 변경해주니 get 메소드만 사후 로깅이 됨.-->
+	<!--<aop:after method="printLoggingAfter" pointcut-ref="getPointcut" />
+	</aop:aspect> -->
+		
+
+	
+	<!-- 0825 새로운 빈등록 -->
+
+	<!-- <bean id="before" class="com.springbook.biz.common.BeforeAdvice"></bean>
+	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"></bean>
+	<bean id="afterThrowing" class="com.springbook.biz.common.AfterThrowingAdvice"></bean>
+	<bean id="after" class="com.springbook.biz.common.AfterAdvice"></bean>
+	<bean id="aroundAdvice" class="com.springbook.biz.common.AroundAdvice"></bean> -->
 	
 	<!-- aop 등록 -->
-	<aop:config>
+<!-- 	<aop:config>
 		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut" />
 
-		<aop:aspect ref="before">
-			<aop:before method="beforeLog" pointcut-ref="allPointcut" />
+		<aop:aspect ref="aroundAdvice">
+			before | after-returning | after-throwing | after | around  사용
+			<aop:around method="aroundLog" pointcut-ref="allPointcut" />
 		</aop:aspect>
 		
-		
-		<!-- <aop:aspect ref="log"> -->
-			<!-- 모든 패키지 biz 내부에 들어있는 Impl로 끝나는 모든 파일들에 대해서 적용 -->
-			<!-- 반환타입(*) 패키지주소.*로끝나는.모든 메소드 -->
-			<!-- <aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut" /> -->
-			<!-- 반환타입(*) 패키지주소.*로끝나는.get으로 끝나는 모든 메소드 -->
-			<!-- <aop:pointcut expression="execution(* com.springbook.biz..*Impl.get*(..))" id="getPointcut"/>
-			<aop:before method="printLogging" pointcut-ref="allPointcut" /> -->
-			<!-- pointcut에 정해준 영역 안에서 printLogging이 시작되기 전(before)에 발생 -->
-			<!-- all에서 get으로 변경해주니 get 메소드만 사후 로깅이 됨.-->
-		<!--<aop:after method="printLoggingAfter" pointcut-ref="getPointcut" />
-		</aop:aspect> -->
-		
-
-	</aop:config>
+	</aop:config> -->
 	
-	
-	
-	
-	
+	<!-- 자동 aop 등록 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 </beans>

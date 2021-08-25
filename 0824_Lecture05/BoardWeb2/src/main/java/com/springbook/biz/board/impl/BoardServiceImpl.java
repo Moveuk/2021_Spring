@@ -36,6 +36,11 @@ public class BoardServiceImpl implements BoardService {
 //		log.printLog();
 //		log.printLogging();
 		
+		// exception log를 위한 throw : 강제 예외 int는 0이 들어갈 수 없음.
+//		if (bVo.getSeq() == 0) {
+//			throw new IllegalArgumentException("0번 글 등록할 수 없습니다.");
+//		}
+//		
 		boardDAO.insertBoard(bVo);
 	}
 
