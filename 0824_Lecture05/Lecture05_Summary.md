@@ -6,7 +6,7 @@ Key Word : Test13 리뷰, AOP (Aspect Oriented Programming), 빌드 도구(Maven
  ## Test13 리뷰
     
     
-  개인적으로 기억해둘 점은 어떤 객체를 반복해서 사용해야 한다면 사용하기 전에 초기화를 해주도록 하자.    
+ 공부해야할 점은 어떤 객체를 반복해서 사용해야 한다면 사용하기 전에 초기화를 해주도록 하자.    
     
 <br>
     
@@ -427,7 +427,7 @@ public class BoardServiceImpl implements BoardService {
  **어드바이스** : 공통 관심사에 해당하는 기능의 코드를 의미(printLogging)    
   - 어드바이스의 동작 시점
     - before : pointcut의 동작 전
-    - after : pointcut의 동작 후
+    - after : pointcut의 동작 후(예외 발생 여부에 상관없이 무조건 수행하는 어드바이스)
     - after-returning : pointcut이 성공적으로 동작하고 리턴되면 실행
     - after-throwing : pointcut이 예외가 발생하면 실행
     - around : pointcut의 동작 전/후
@@ -474,42 +474,9 @@ public class BoardServiceImpl implements BoardService {
 ![image](https://user-images.githubusercontent.com/84966961/130567596-964b1c30-de6a-4833-ad57-4e735a421140.png)    
    
 
-
 <br><br><hr>
 
-#### 2.4.2 어드바이스의 동작 시점
-
- 동작시점을 알아보기 위해 전(before)에는 allPointcut을 후(after)에는 getPointcut을 적용하였다.
-
-```XML
-	<!-- aop 등록 -->
-	<aop:config>
-
-		<!-- 모든 패키지 biz 내부에 들어있는 Impl로 끝나는 모든 파일들에 대해서 적용 -->
-		<!-- 반환타입(*) 패키지주소.*로끝나는.모든 메소드 -->
-		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut" />
-		<!-- 반환타입(*) 패키지주소.*로끝나는.get으로 끝나는 모든 메소드 -->
-		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.get*(..))" id="getPointcut"/>
-
-		<!-- aspect log 레퍼런스(Log4jAdvice)에게 공통관심사 등록 / 구현 객체 지정 -->
-		<aop:aspect ref="log">
-			<aop:before method="printLogging" pointcut-ref="allPointcut" />
-			<!-- pointcut에 정해준 영역 안에서 printLogging이 시작되기 전(before)에 발생 -->
-			<!-- all에서 get으로 변경해주니 get 메소드만 사후 로깅이 됨.-->
-			<aop:after method="printLoggingAfter" pointcut-ref="getPointcut" />
-		</aop:aspect>
-
-	</aop:config>
-```
-
-**결과 화면**   
-![image](https://user-images.githubusercontent.com/84966961/130570822-44b870c1-f03c-4761-b57e-8d2c17744222.png)     
-
-
-
-<br><br><hr>
-
-#### 2.4.3 aop:pointcut expression 표현식
+#### 2.4.2 aop:pointcut expression 표현식
 
 ```
 execution(* com.springbook.biz..*Impl.get*(..))
@@ -544,7 +511,48 @@ execution(* com.springbook.biz..*Impl.get*(..))
 
 <br><br><hr>
 
-### 2.5 BeforeAdvice 설정
+#### 2.4.3 어드바이스의 동작 시점
+
+  - 어드바이스의 동작 시점
+    - before : pointcut의 동작 전
+    - after : pointcut의 동작 후(예외 발생 여부에 상관없이 무조건 수행하는 어드바이스)
+    - after-returning : pointcut이 성공적으로 동작하고 리턴되면 실행
+    - after-throwing : pointcut이 예외가 발생하면 실행
+    - around : pointcut의 동작 전/후
+   
+<br>
+    
+ 동작시점을 알아보기 위해 전(before)에는 allPointcut을 후(after)에는 getPointcut을 적용하였다.
+
+```XML
+	<!-- aop 등록 -->
+	<aop:config>
+
+		<!-- 모든 패키지 biz 내부에 들어있는 Impl로 끝나는 모든 파일들에 대해서 적용 -->
+		<!-- 반환타입(*) 패키지주소.*로끝나는.모든 메소드 -->
+		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut" />
+		<!-- 반환타입(*) 패키지주소.*로끝나는.get으로 끝나는 모든 메소드 -->
+		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.get*(..))" id="getPointcut"/>
+
+		<!-- aspect log 레퍼런스(Log4jAdvice)에게 공통관심사 등록 / 구현 객체 지정 -->
+		<aop:aspect ref="log">
+			<aop:before method="printLogging" pointcut-ref="allPointcut" />
+			<!-- pointcut에 정해준 영역 안에서 printLogging이 시작되기 전(before)에 발생 -->
+			<!-- all에서 get으로 변경해주니 get 메소드만 사후 로깅이 됨.-->
+			<aop:after method="printLoggingAfter" pointcut-ref="getPointcut" />
+		</aop:aspect>
+
+	</aop:config>
+```
+
+**결과 화면**   
+![image](https://user-images.githubusercontent.com/84966961/130570822-44b870c1-f03c-4761-b57e-8d2c17744222.png)     
+
+
+
+<br><br><hr>
+
+#### 2.4.4 BeforeAdvice 설정
 
  새로운 bean 등록.
 
