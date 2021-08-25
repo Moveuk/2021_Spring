@@ -19,7 +19,8 @@ Learning about basic Spring
     CRUD 기능 추가, Test13
 5. 20210824 [Lecture05](https://github.com/Moveuk/2021_Spring/blob/main/0824_Lecture05/Lecture05_Summary.md)   
     Test13 리뷰, AOP, 빌드 도구(Maven, Gradle), Log4j, joinpoint, pointcut, advice, Weaving, Aspect, Advisor   
-6. 20210 [Lecture](https://github.com/Moveuk/2021_Spring/blob/main/08_Lecture/Lecture_Summary.md)     
+6. 20210825 [Lecture06](https://github.com/Moveuk/2021_Spring/blob/main/0825_Lecture06/Lecture06_Summary.md)     
+    AOP (Aspect Oriented Programming), Bean Braph, XML AOP, @annotation AOP, stopWatch 메소드 실행 시간 파악 
 7. 20210 Lecture07   
 8. 20210 Lecture08   
 9. 20210 Lecture09   
