@@ -52,8 +52,8 @@ Key Word : Spring JDBC 환경 구성
     - JdbcTemplate에는 JDBC를 위한 편의성 메소드가 있음.
     - update(...) : insert, update, delete
     - queryForInt(...) : select
-    - queryForObject(...) : select
-    - query(...) : select
+    - queryForObject(...) : select - 하나의 객체(Object) 결과 값이 나올 때 사용하는 메소드이다.(객체 그대로 반환)
+    - query(...) : select - 
 
 
 <br><br>
@@ -67,11 +67,15 @@ Key Word : Spring JDBC 환경 구성
 	</bean>
 ```
 
-
+ <br><br>
+<hr>
+ 
+ 
+## 2. Spring JDBC 구현
 
 <br><br>
 
-### 1.6 사용을 위한 BoardDAOSpring 클래스 생성
+### 2.1 사용을 위한 BoardDAOSpring 클래스 생성
   - 사용할 sql문을 상수 변수로 정의함.
 ![image](https://user-images.githubusercontent.com/84966961/130890206-1b815a10-f044-48ad-a0a4-3797219d99e0.png)   
 
@@ -126,8 +130,8 @@ Key Word : Spring JDBC 환경 구성
 ```java
 	public BoardVO getBoard(BoardVO bVo) {
 		System.out.println("===> Spring JDBC로 getBoard() 기능 처리");
-		
-		return jdbcTemplate.queryForObject(BOARD_GET, new Object [bVo.getSeq()], boardRowMapper);
+		System.out.println("==>> Spring JDBC로 deleteBoard() 기능 처리");
+		jdbcTemplate.update(BOARD_DELETE,vo.getSeq());
 	}
 ```
 
@@ -135,29 +139,5 @@ Key Word : Spring JDBC 환경 구성
 <br>
  
 
-<br><br>
+<br><br> <hr>
 
-#### 2.4.4 동작 시점 예제
-
-1. 새로운 bean 등록.
-
-```xml
-	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"></bean>
-	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"></bean>
-	<bean id="afterThrowing" class="com.springbook.biz.common.AfterThrowingAdvice"></bean>
-	<bean id="after" class="com.springbook.biz.common.AfterAdvice"></bean>
-	<bean id="aroundAdvice" class="com.springbook.biz.common.AroundAdvice"></bean>
-	
-	<!-- aop 등록 -->
-	<aop:config>
-		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut" />
-
-		<aop:aspect ref="aroundAdvice">
-			<!-- before | after-returning | after-throwing | after | around  사용 -->
-			<aop:around method="aroundLog" pointcut-ref="allPointcut" />
-		</aop:aspect>
-		
-	</aop:config>
-```
-
-<br>
