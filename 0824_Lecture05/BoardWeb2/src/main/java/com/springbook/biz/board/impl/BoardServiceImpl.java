@@ -14,8 +14,12 @@ import com.springbook.biz.common.LogAdvice;
 public class BoardServiceImpl implements BoardService {
 
 	// DAO를 사용하기 위한 객체 생성
+
+	// 타입만 교체를 해주면 기존 메소드들을 사용할 수 있다.
+//	@Autowired
+//	private BoardDAO boardDAO;
 	@Autowired
-	private BoardDAO boardDAO;
+	private BoardDAOSpring boardDAO;
 	
 	//private LogAdvice log; 새로운 로그로 교체
 //	private Log4jAdvice log;
@@ -40,7 +44,7 @@ public class BoardServiceImpl implements BoardService {
 //		if (bVo.getSeq() == 0) {
 //			throw new IllegalArgumentException("0번 글 등록할 수 없습니다.");
 //		}
-//		
+		
 		boardDAO.insertBoard(bVo);
 	}
 

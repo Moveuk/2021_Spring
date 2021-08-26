@@ -7,8 +7,35 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
-	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
+	<!-- 패키지 내부 annotation 자동 스캔 -->
 
+	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
+	
+	<!-- 자동 aop 등록 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<context:property-placeholder location="classpath:config/database.properties"/>
+	
+	<!-- 외부 라이브러리 빈등록 -->
+	
+	<!-- Connection 객체 : dbcp 라이브러리 - destroy-method(사용 후 자동으로 close메소드) -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<!-- Setter method 등록 : 오라클 드라이버 등록 / JSP Context.xml 파일에 저장한 드라이버 세팅과 똑같다.-->
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="maxActive" value="8"></property>
+		<property name="maxIdle" value="8"></property>
+	</bean>
+
+<!-- Pstmt & DAO 기능 : jdbcTemplate 라이브러리 - Connection을 이용해서 CRUD 실행 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+
+
+	<!-- 지난 수업 내용 -->
 
 	<!-- <bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl" lazy-init="true"> <property 
 		name="userDAO" ref="userDAO"></property> </bean> <bean id = "userDAO" class="com.springbook.biz.user.impl.UserDAO" 
@@ -49,8 +76,5 @@
 		</aop:aspect>
 		
 	</aop:config> -->
-	
-	<!-- 자동 aop 등록 -->
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	
+
 </beans>
