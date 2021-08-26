@@ -1,5 +1,5 @@
 # Lecture07 BoardWeb2 Spring JDBC
-Key Word : Spring JDBC 환경 구성    
+Key Word : Spring JDBC 환경 구성, Spring JDBC 구현     
 
 <hr/>
 
