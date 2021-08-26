@@ -159,6 +159,7 @@ public class LogAdvice {
 이 전에 했던 xml을 통해 코드로 등록하는 것과 똑같은 결과를 내보인다.
 
 <br>
+
 ![image](https://user-images.githubusercontent.com/84966961/130716155-02b6ab7f-d1a6-46ff-9702-4c67c9d69581.png)   
 
 
@@ -184,10 +185,12 @@ public class BeforeAdvice {
 	}
 }
 ```
-<br><br>
 
-**@annotation 방식 설정 **    
+<br>
 
+**@annotation 방식 설정 **
+
+<br>
 
 **before**    
 ![image](https://user-images.githubusercontent.com/84966961/130717160-c3d83bcf-6669-4294-9c6f-ffb942aef647.png)
