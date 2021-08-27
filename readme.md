@@ -23,7 +23,8 @@ Learning about basic Spring
     AOP (Aspect Oriented Programming), Bean Braph, XML AOP, @annotation AOP, stopWatch 메소드 실행 시간 파악 
 7. 20210826 [Lecture07](https://github.com/Moveuk/2021_Spring/blob/main/0826_Lecture07/Lecture07_Summary.md)   
     Spring JDBC 환경 구성, Spring JDBC 구현
-8. 20210 Lecture08   
+8. 20210827 [Lecture08](https://github.com/Moveuk/2021_Spring/blob/main/0827_Lecture08/Lecture08_Summary.md)    
+    트랜잭션, Web에서의 Spring 사용 예제를 위한 기본 구성
 9. 20210 Lecture09   
 10. 20210 Lecture10    
 11. 20210 Lecture11     
