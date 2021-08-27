@@ -19,6 +19,9 @@ public class BoardDAOSpring {
 	// final 객체는 매개변수로 method에 들어감.
 	private final String BOARD_INSERT = "INSERT INTO board1(seq,title,writer,content) "
 			+ "VALUES ((SELECT nvl(max(seq), 0)+1 FROM board1),?,?,?)";
+	// 트랜잭션 테스트용
+//	private final String BOARD_INSERT = "INSERT INTO board1(seq,title,writer,content) "
+//			+ "VALUES (?,?,?,?)";
 	private final String BOARD_UPDATE = "UPDATE board1 SET title=?, content=? WHERE seq=?";
 	private final String BOARD_DELETE = "DELETE FROM board1 WHERE seq=?";
 	private final String BOARD_GET = "SELECT * FROM board1 WHERE seq=?";
@@ -30,6 +33,8 @@ public class BoardDAOSpring {
 	public void insertBoard(BoardVO bVo) {
 		System.out.println("===> Spring JDBC로 insertBoard() 기능 처리");
 		jdbcTemplate.update(BOARD_INSERT, bVo.getTitle(), bVo.getWriter(), bVo.getContent());
+		// 트랜잭션 테스트용
+//		jdbcTemplate.update(BOARD_INSERT, bVo.getSeq(), bVo.getTitle(), bVo.getWriter(), bVo.getContent());
 	}
 	
 	public List<BoardVO> getBoardList(BoardVO bVo) {

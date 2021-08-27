@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import com.springbook.biz.board.BoardService;
+import com.springbook.biz.board.BoardVO;
+
 // 테스트용 클래스
 public class BoardServiceTest {
 

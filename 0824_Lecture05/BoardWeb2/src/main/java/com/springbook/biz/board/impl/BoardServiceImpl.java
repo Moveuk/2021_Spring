@@ -46,6 +46,7 @@ public class BoardServiceImpl implements BoardService {
 //		}
 		
 		boardDAO.insertBoard(bVo);
+//		boardDAO.insertBoard(bVo);
 	}
 
 	@Override

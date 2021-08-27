@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import com.springbook.mybiz.user.UserService;
-import com.springbook.mybiz.user.UserVO;
+import com.springbook.biz.user.UserService;
+import com.springbook.biz.user.UserVO;
 
 // 테스트용 클래스
 public class UserServiceTest {

@@ -30,6 +30,8 @@ public class BoardServiceTest {
 		switch (key) {
 		case "1":
 			// Insert
+//			System.out.println("번호를 입력해 주세요.");
+//			bVo.setSeq(Integer.parseInt(br.readLine()));
 			System.out.println("제목을 입력해 주세요.");
 			bVo.setTitle(br.readLine());
 			System.out.println("글쓴이를 입력해 주세요.");

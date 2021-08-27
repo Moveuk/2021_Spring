@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.springbook.mybiz.board.BoardVO;
-import com.springbook.mybiz.board.impl.BoardDAO;
-import com.springbook.mybiz.board.impl.BoardServiceImpl;
+import com.springbook.biz.board.BoardVO;
+import com.springbook.biz.board.impl.BoardDAO;
+import com.springbook.biz.board.impl.BoardServiceImpl;
 
 // 테스트용 서블릿 작동함.
 public class BoardTest extends HttpServlet {
