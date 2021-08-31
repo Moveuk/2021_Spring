@@ -25,8 +25,10 @@ Learning about basic Spring
     Spring JDBC 환경 구성, Spring JDBC 구현
 8. 20210827 [Lecture08](https://github.com/Moveuk/2021_Spring/blob/main/0827_Lecture08/Lecture08_Summary.md)    
     트랜잭션, Web에서의 Spring 사용 예제를 위한 기본 구성
-9. 20210 Lecture09   
-10. 20210 Lecture10    
+9. 20210830 [Lecture09](https://github.com/Moveuk/2021_Spring/blob/main/0830_Lecture09/Lecture09_Summary.md)     
+    Model1, MVC 방식 Spring
+10. 20210831 [Lecture10](https://github.com/Moveuk/2021_Spring/blob/main/0831_Lecture10/Lecture10_Summary.md)    
+    Model1, MVC 방식 Spring - 삽입, 수정, 삭제, 로그아웃.. ,	
 11. 20210 Lecture11     
 12. 20210 Lecture12  
 13. 20210 Lecture13    
