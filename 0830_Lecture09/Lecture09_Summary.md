@@ -1,5 +1,5 @@
 # Lecture09  BoardWeb3
-Key Word : 트랜잭션, Web에서의 Spring 사용 예제를 위한 기본 구성      
+Key Word : Model1, MVC 방식 Spring      
 
 <hr/>
 
@@ -258,13 +258,4 @@ public class DispatcherServlet extends HttpServlet {
  
  <br><hr/>
  
-### 2.2    
-
-
-
-
-
-
-
-
 
