@@ -4,9 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-BoardVO bVo = new BoardVO();
-BoardDAO bDao = new BoardDAO();
-List<BoardVO> boardList = bDao.getBoardList(bVo);
+	List<BoardVO> boardList = (List)session.getAttribute("boardList");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,7 +17,7 @@ List<BoardVO> boardList = bDao.getBoardList(bVo);
 		<h1>글목록</h1>
 		<h3>
 			테스트님 환영합니다...
-			<a href="logout_proc.jsp">Log-out</a>
+			<a href="logout.do">Log-out</a>
 		</h3>
 		<!-- 검색 시작 -->
 		<form action="getBoardList.jsp" method="post">
@@ -49,7 +47,7 @@ List<BoardVO> boardList = bDao.getBoardList(bVo);
 			%>
 			<tr>
 				<td><%=board.getSeq()%></td>
-				<td><a href="getBoard.jsp?seq=<%=board.getSeq()%>"><%=board.getTitle()%></a></td>
+				<td><a href="getBoard.do?seq=<%=board.getSeq()%>"><%=board.getTitle()%></a></td>
 				<td><%=board.getWriter()%></td>
 				<td><%=board.getRegDate()%></td>
 				<td><%=board.getCnt()%></td>

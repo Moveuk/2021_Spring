@@ -4,12 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-String seq = request.getParameter("seq");
-BoardVO bVo = new BoardVO();
-bVo.setSeq(Integer.parseInt(seq));
-
-BoardDAO bDao = new BoardDAO();
-bVo = bDao.getBoard(bVo);
+BoardVO bVo = (BoardVO)session.getAttribute("bVo");
 %>
 <!DOCTYPE html>
 <html>
@@ -20,9 +15,9 @@ bVo = bDao.getBoard(bVo);
 <body>
 	<center>
 		<h1>글 상세</h1>
-		<a href="logout_proc.jsp">Log-out</a>
+		<a href="logout.do">Log-out</a>
 		<hr />
-		<form action="updateBoard_proc.jsp" method="post">
+		<form action="updateBoard_proc.do" method="post">
 			<input name="seq" type="hidden" value="<%=bVo.getSeq()%>">
 			<table border="1" cellpadding="0" cellspacing=0>
 				<tr>
@@ -57,9 +52,9 @@ bVo = bDao.getBoard(bVo);
 			</table>
 		</form>
 		<hr>
-		<a href="insertBoard.jsp">글등록</a>&nbsp;&nbsp;&nbsp;
-		<a href="deleteBoard.jsp?seq=<%=bVo.getSeq()%>">글삭제</a>&nbsp;&nbsp;&nbsp;
-		<a href="getBoardList.jsp">글목록</a>
+		<a href="insertBoard.do">글등록</a>&nbsp;&nbsp;&nbsp;
+		<a href="deleteBoard.do?seq=<%=bVo.getSeq()%>">글삭제</a>&nbsp;&nbsp;&nbsp;
+		<a href="getBoardList.do">글목록</a>
 	</center>
 </body>
 </html>
