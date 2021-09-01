@@ -29,7 +29,7 @@ Learning about basic Spring
     Model1, MVC 방식 Spring
 10. 20210831 [Lecture10](https://github.com/Moveuk/2021_Spring/blob/main/0831_Lecture10/Lecture10_Summary.md)    
     Model1, MVC 방식 Spring - 삽입, 수정, 삭제, 로그아웃.. 	
-11. 20210901 Lecture11     
+11. 20210901 [Lecture11](https://github.com/Moveuk/2021_Spring/blob/main/0901_Lecture11/Lecture11_Summary.md)    
     HandlerMapping, ViewResolver, Controller 파트 분리
 12. 20210 Lecture12  
 13. 20210 Lecture13    
