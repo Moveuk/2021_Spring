@@ -31,7 +31,8 @@ Learning about basic Spring
     Model1, MVC 방식 Spring - 삽입, 수정, 삭제, 로그아웃.. 	
 11. 20210901 [Lecture11](https://github.com/Moveuk/2021_Spring/blob/main/0901_Lecture11/Lecture11_Summary.md)    
     HandlerMapping, ViewResolver, Controller 파트 분리
-12. 20210 Lecture12  
+12. 20210902 [Lecture12](https://github.com/Moveuk/2021_Spring/blob/main/0902_Lecture12/Lecture12_Summary.md)   
+    EL식 표현 사용, web.xml, 기본 서블릿 파일 설정(servlet-mapping), 인코딩 필터링(filter-mapping), 인코딩 방식 설정(filter), ModelAndView 사용    
 13. 20210 Lecture13    
 14. 20210 Lecture14    
 15. 20210 Lecture15     
