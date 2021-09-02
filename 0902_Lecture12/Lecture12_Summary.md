@@ -1,5 +1,5 @@
 # Lecture12  BoardWeb3.2
-Key Word : EL식 표현 사용, web.xml, 기본 서블릿 파일 설정(servlet-mapping), 인코딩 필터링(filter-mapping), 인코딩 방식 설정(filter),       
+Key Word : EL식 표현 사용, web.xml, 기본 서블릿 파일 설정(servlet-mapping), 인코딩 필터링(filter-mapping), 인코딩 방식 설정(filter), ModelAndView 사용      
 
 <hr/>
 
@@ -393,7 +393,7 @@ init-param 이라는 태그를 통해 기본적으로 서블릿이 사용할 xml
  
  <br><hr/>
 
-### 3.2 리스트 화면 전환
+### 3.3 리스트 화면 전환
 
 Spring의 ModelAndView는 정보 또한 함께 넘길 수 있다.    
 
@@ -444,9 +444,24 @@ public class GetBoardListController implements Controller {
 ```
 
 
+ 
+ <br><hr/>
+
+### 3.4 모든 컨트롤러 수정 및 빈 등록
+
+ ModelAndView 객체를 이용하여 이동할 페이지와 보내줘야할 데이터를 저장하여 보내도록 모든 컨트롤러를 변경해주면 정상 작동하는 것을 확인할 수 있다.   
+ 
+ 다음과 같은 방식으로 컨트롤러를 모두 수정하자.
 
 
+```java
+	ModelAndView mav = new ModelAndView();
+	mav.setViewName("getBoardList.do");
+```
 
+
+ 
+ <br><hr/>
 
 
 
