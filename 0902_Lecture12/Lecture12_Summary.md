@@ -13,7 +13,7 @@ Key Word : EL식 표현 사용, web.xml, 기본 서블릿 파일 설정(servlet-
  
  기존에는 직접 Spring의 구조를 알아보기 위해 Controller, DispatcherServlet 등을 직접 만들었지만 3.2에서는 만들었던 모든 것을 삭제하여 Spring의 기능을 사용하여 구현하도록 한다.   
     
- [BoardWeb3.2 코드 페이지 이동](https://github.com/Moveuk/2021_Spring/tree/main/0902_Lecture09/BoardWeb3.2)
+ [BoardWeb3.2 코드 페이지 이동](https://github.com/Moveuk/2021_Spring/tree/main/0902_Lecture12/BoardWeb3.2)
  
  
  <br><hr/>
