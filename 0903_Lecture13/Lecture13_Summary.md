@@ -1,5 +1,5 @@
-# Lecture12  BoardWeb3.2 & BoardWeb4
-Key Word : ViewResolver, BoardWeb4, context Scan, Controller Mapping, RequestMapping,     
+# Lecture13  BoardWeb3.2 & BoardWeb4
+Key Word : ViewResolver, BoardWeb4, context Scan, Controller Mapping, RequestMapping, command object, 자동 객체 생성, redirect, forward, view 페이지 이동 방법   
 
 <hr/>
 
@@ -109,9 +109,11 @@ presentation-layer.xml에 ViewResolver를 사용하기 위해 등록한다.
 
  새로운 버전을 만들어 실행한다.
  
- BoardWeb4에서는 Spring 자동 빈 스캔 기능을 활용하여 예제를 만들어보고 Spring을 익혀본다.
+ BoardWeb4에서는 Spring 자동 빈 스캔 기능을 활용하여 예제를 만들어보고 Spring을 익혀본다.     
 
-
+   
+ [BoardWeb4 코드 페이지 이동](https://github.com/Moveuk/2021_Spring/tree/main/0903_Lecture13/BoardWeb4)
+ 
  <br><hr/>
 
 ## 1 새로운 프로젝트 BoardWeb4 생성 
@@ -246,7 +248,7 @@ public class InsertBoardController {
 
  <br><hr/>
 
-## 3. 객체 생성 및 초기화 자동 처리
+### 2.3 객체 생성 및 초기화 자동 처리
 
 1. VO 객체 자동생성   
 
@@ -286,12 +288,11 @@ Spring은 메소드에 VO객체인 커맨드 객체를 매개변수로 지정하
 **코드와 해설**   
 
 ```java
-
 @Controller
 public class InsertBoardController {
 
 	@RequestMapping(value = "/insertBoard.do")
-	public void handleRequest(BoardVO bVo, BoardDAO bDao) {
+	public String handleRequest(BoardVO bVo, BoardDAO bDao) {
 //	public void handleRequest(command object... / 생략 : HttpServletRequest request) {
 		// JSP의 Bean 태그 처럼 객체를 생성하게 된다.
 		System.out.println("글 삽입 처리");
@@ -313,31 +314,74 @@ public class InsertBoardController {
 		
 		bDao.insertBoard(bVo);
 		
+		return "redirect:getBoardList.do";
+		
+	}
+
+}
+```
+
+  
+ <br><hr/>
+
+## 3. view로 이동 
+
+컨트롤러에서 리턴하는 값이 view에 대한 값이다.    
+ 
+만약 리턴값에 `redirect:` 처리가 없다면 forward 방식으로 처리한 것이다.      
+
+InsertBoardController의 리턴 타입을 String으로 바꾸어 이동하고자하는 url 패턴을 리턴한다.
+
+```		
+		return "redirect:getBoardList.do";		
+```
+
+
+ <br><hr/>
+
+### 3.1 view 전환 컨트롤러 구성
+
+ModelAndVIew를 사용한다.
+
+```java
+@Controller
+public class GetBoardListController {
+
+	@RequestMapping(value = "/getBoardList.do")
+	public ModelAndView getBoardList(BoardVO vo, BoardDAO boardDAO, ModelAndView mav) {
+		System.out.println("글 목록 검색 처리");
+
+//		BoardVO vo = new BoardVO();
+//		BoardDAO boardDAO = new BoardDAO();
+		List<BoardVO> boardList = boardDAO.getBoardList(vo);
+
+		// 스프링 Model And View를 사용하므로써 필요 없어짐.
+//		session.setAttribute("boardList", boardList);
+
+//		ModelAndView mav = new ModelAndView();
+
+		// 기존에는 리스트를 세션에 넘겼지만 mav는 내부에 저장할 수 있다.
+		mav.addObject("boardList", boardList);
+		mav.setViewName("getBoardList.jsp");
+
+		return mav;
 	}
 
 }
 
 ```
 
-  
+**결과 화면**
+![image](https://user-images.githubusercontent.com/84966961/131953916-e72d6856-30fb-4aac-a20f-b9630f4a6a97.png)
+
+
+
+
+
  <br><hr/>
 
-## 4. 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-   
 
 
 
