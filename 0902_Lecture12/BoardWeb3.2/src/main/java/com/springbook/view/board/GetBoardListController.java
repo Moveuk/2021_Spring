@@ -32,7 +32,7 @@ public class GetBoardListController implements Controller {
 		// 기존에는 리스트를 세션에 넘겼지만 mav는 내부에 저장할 수 있다.
 		mav.addObject("boardList", boardList);
 		if(user != null) {
-			mav.setViewName("getBoardList.jsp");
+			mav.setViewName("getBoardList");
 		} else {
 			mav.setViewName("login.jsp");
 		}

@@ -31,7 +31,7 @@ public class InsertBoardController implements Controller {
 		bDao.insertBoard(bVo);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("getBoardList.do");
+		mav.setViewName("redirect:getBoardList.do");
 		
 		return mav;
 	}
