@@ -1,25 +1,24 @@
 package com.springbook.view.board;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
 
-public class GetBoardController implements Controller {
+@Controller
+public class GetBoardController {
 
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("/getBoard.do")
+	public ModelAndView getBoard(BoardVO bVo, BoardDAO bDao, ModelAndView mav) {
 		System.out.println("글 상세 처리");
 
-		String seq = request.getParameter("seq");
-		BoardVO bVo = new BoardVO();
-		bVo.setSeq(Integer.parseInt(seq));
+//		String seq = request.getParameter("seq");
+//		BoardVO bVo = new BoardVO();
+//		bVo.setSeq(Integer.parseInt(seq));
 
-		BoardDAO bDao = new BoardDAO();
+//		BoardDAO bDao = new BoardDAO();
 		bDao.updateBoardReadCnt(bVo);
 		BoardVO board = bDao.getBoard(bVo);
 		
@@ -27,9 +26,9 @@ public class GetBoardController implements Controller {
 //		HttpSession session = request.getSession();
 //		session.setAttribute("bVo", board);
 		
-		ModelAndView mav = new ModelAndView();
+//		ModelAndView mav = new ModelAndView();
 		mav.addObject("board",board);
-		mav.setViewName("getBoard");
+		mav.setViewName("getBoard.jsp");
 		
 		return mav;
 	}

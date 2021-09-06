@@ -1,45 +1,42 @@
 package com.springbook.view.user;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.impl.UserDAO;
 
-public class LoginController implements Controller {
+@Controller
+public class LoginController {
 
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping("/login.do")
+	public String login(UserVO uVo, UserDAO userDAO, HttpSession session) {
 		System.out.println("로그인 처리");
 
 		// 1. 사용자 입력 정보 추출
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+//		String id = request.getParameter("id");
+//		String password = request.getParameter("password");
 		
 		// 2. DB 연동 처리
-		UserVO vo = new UserVO();
-		vo.setId(id);
-		vo.setPassword(password);
-		UserDAO userDAO = new UserDAO();
-		UserVO user = userDAO.getUser(vo);
+//		UserVO uVo = new UserVO();
+//		vo.setId(id);
+//		vo.setPassword(password);
+//		UserDAO userDAO = new UserDAO();
+		UserVO user = userDAO.getUser(uVo);
 
 		// 3. 화면 네비게이션
-		ModelAndView mav = new ModelAndView();
+//		ModelAndView mav = new ModelAndView();
 		// viewResolver가 prefix와 suffix를 붙여 사용하게 해준것처럼 mav도 가지고 있다.
-		if(user != null) {
-			mav.setViewName("redirect:getBoardList.do");
-			HttpSession session = request.getSession();
+		if(user!=null) {
 			session.setAttribute("user", user);
+			return "getBoardList.do";
 		} else {
-			mav.setViewName("redirect:login.jsp");
+			return "login.jsp";
 		}
 		 	
 		
-		return mav;
 		
 		// 기존 네비게이션 삭제
 //		if (user != null) {

@@ -10,7 +10,7 @@ import com.springbook.biz.board.impl.BoardDAO;
 public class InsertBoardController {
 
 	@RequestMapping(value = "/insertBoard.do")
-	public String handleRequest(BoardVO bVo, BoardDAO bDao) {
+	public String insertBoard(BoardVO bVo, BoardDAO bDao) {
 //	public void handleRequest(command object... / 생략 : HttpServletRequest request) {
 		// JSP의 Bean 태그 처럼 객체를 생성하게 된다.
 		System.out.println("글 삽입 처리");
