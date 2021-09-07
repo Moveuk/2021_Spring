@@ -37,7 +37,8 @@ Learning about basic Spring
     ViewResolver, BoardWeb4, context Scan, Controller Mapping, RequestMapping, command object, 자동 객체 생성, redirect, forward, view 페이지 이동 방법   
 14. 20210906 [Lecture14](https://github.com/Moveuk/2021_Spring/blob/main/0906_Lecture14/Lecture14_Summary.md)      
     모든 컨트롤러 형식 변경, Test15
-15. 20210 Lecture15     
+15. 20210907 [Lecture15](https://github.com/Moveuk/2021_Spring/blob/main/0907_Lecture15/Lecture15_Summary.md)      
+    BoardWeb4.1 - Controller 합치기, 검색 기능, @ModelAttribute, @SessionAttribute     
 16. 20210 Lecture16   
 17. 20210 Lecture17   
 18. 20210 Lecture18   
