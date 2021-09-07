@@ -14,12 +14,10 @@
                 		
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-                		
-        
-        <property name="java-output-path" value="target/classes"/>
                         
         
         <property name="context-root" value="biz"/>
+        <property name="java-output-path" value="/0903_BoardWeb4/target/classes"/>
                 	
     
     </wb-module>
