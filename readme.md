@@ -39,9 +39,12 @@ Learning about basic Spring
     모든 컨트롤러 형식 변경, Test15
 15. 20210907 [Lecture15](https://github.com/Moveuk/2021_Spring/blob/main/0907_Lecture15/Lecture15_Summary.md)      
     BoardWeb4.1 - Controller 합치기, 검색 기능, @ModelAttribute, @SessionAttribute     
-16. 20210 Lecture16   
-17. 20210 Lecture17   
-18. 20210 Lecture18   
+16. 20210908 [Lecture16](https://github.com/Moveuk/2021_Spring/blob/main/0908_Lecture16/Lecture16_Summary.md)      
+    BoardWeb4.2 
+17. 20210909 [Lecture17](https://github.com/Moveuk/2021_Spring/blob/main/0909_Lecture17/Lecture17_Summary.md)    
+    BoardWeb4.3, JDBC Templete, UserDAO, 스프링방식 변환, 검색기능, like 와일드 카드, 파일 업로드 기능,
+18. 20210914 [Lecture18](https://github.com/Moveuk/2021_Spring/blob/main/0914_Lecture18/Lecture18_Summary.md)    
+    BoardWeb4.3, 예외 처리, @ControllerAdvice, @ExceptionHandler, 다국어 처리, messageSource_en.properties     
 19. 20210 Lecture19   
 20. 20210 Lecture20    
 21. 20210 Lecture21    
