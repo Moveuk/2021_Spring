@@ -29,6 +29,11 @@ public class LoginController {
 	@RequestMapping(value= "/login.do", method=RequestMethod.POST)
 	public String login(UserVO vo, UserDAO userDAO,HttpSession session) {
 		
+		// 브라우저 js에서 할 수 있는 것을 나눠서 자원 효율을 올려야한다.
+		if(vo.getId() == null || vo.getId().equals("")) {
+			throw new IllegalArgumentException("아이디를 반드시 입력하세요");
+		}
+		
 		UserVO user = userService.getUser(vo);
 		if (user != null) {
 			

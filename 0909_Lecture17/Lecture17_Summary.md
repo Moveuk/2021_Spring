@@ -346,30 +346,3 @@ public class BoardDAOSpring {
 
  <br><hr/>
 
-
-### 사용자 배려 예외처리 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <br><hr/>
-
-
-
