@@ -77,6 +77,13 @@ public class CommonExceptionHandler {
 
 		return mav;
 	}
+<<<<<<< HEAD
+
+	// 예외 연습 1
+	@ExceptionHandler(NullPointerException.class)
+	public ModelAndView handlerNullPointerException(Exception e) {
+		// 메소드 이름 변경 가능
+=======
 
 	// 예외 연습 1
 	@ExceptionHandler(NullPointerException.class)
@@ -108,6 +115,167 @@ public class CommonExceptionHandler {
  <br><hr/>
 
 
+### 예외처리 뷰페이지 작성
+
+사용자에게 보여줄 페이지를 작성한다.
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- 에러 페이지라는 표시 -->
+<%@ page isErrorPage="true"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table width="100" % border="1" cellspacing="0" cellpadding="0">
+		<tr>
+			<td align="center" bgcolor="orange">
+				<b>기본 에러 화면입니다.</b>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table width="100" % border="1" cellspacing="0" cellpadding="0">
+		<tr>
+			<td align="center" bgcolor="orange">
+				Message : ${exception.message }
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
+```
+
+**브라우저 화면**     
+![image](https://user-images.githubusercontent.com/84966961/133181483-eb020b69-2d6b-4ea4-8816-bc1a2a07dc8b.png)    
+
+
+ <br><hr/>
+
+
+## 다국어 처리
+>>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exception", e); // 예외에 대한 정보.
+		mav.setViewName("/common/nullPointerError.jsp"); // 예외시 이동할 페이지
+
+<<<<<<< HEAD
+		return mav;
+	}
+
+	// 예외 연습 2
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handlerException(Exception e) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exception", e); // 예외에 대한 정보.
+		mav.setViewName("/common/error.jsp"); // 예외시 이동할 페이지
+=======
+### 다국어 페이지 속성 값이 저장된 messageSource_en.properties
+
+다음 사진처럼 properties 파일을 이용하여 resource/message 폴더 내부에 `messageSource_en.properties` 파일을 만들어 저장해준다.
+
+![image](https://user-images.githubusercontent.com/84966961/133181309-3189dcc8-fd21-49a6-94a2-f1d2f44cf048.png)    
+>>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
+
+		return mav;
+	}
+
+<<<<<<< HEAD
+}
+```
+=======
+### 다국어 페이지 속성 값이 저장된 messageSource_ko.properties
+
+한국어는 자동으로 유니코드로 등록되기 때문에 미리 txt에 작성한 다음 properties 파일로 옴겨주도록하자    
+
+![image](https://user-images.githubusercontent.com/84966961/133183502-5974014c-4167-47c8-9937-cae839e1e53b.png)    
+
+
+
+
+ <br><hr/>
+
+
+### presetation-layer.xml 수정
+
+메세지에 대해 스프링이 인지할 수 있도록 매핑해준다.
+
+![image](https://user-images.githubusercontent.com/84966961/133188964-34a6ff28-e13d-4518-85ea-ac1849141dda.png)
+
+
+
+
+
+ <br><hr/>
+
+
+### login 뷰페이지 내용 수정
+
+login 뷰페이지에 기존 한글로 작성했던 부분을 spring이 properties 파일의 값을 받아와서 자동으로 작성되도록 변경했다.    
+
+이 후 한글과 영어로 변경할 수 있도록 버튼을 배치했다.
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><spring:message code="message.user.login.title"></spring:message></title>
+</head>
+<body>
+	<center>
+		<h1><spring:message code="message.user.login.title"></spring:message></h1>
+		
+		<a href="login.do?lang=en">
+			<spring:message code="message.user.login.language.en" />
+		</a>
+		&nbsp;&nbsp;
+		<a href="login.do?lang=ko">
+			<spring:message code="message.user.login.language.ko" />
+		</a>
+		<hr>
+		<form action="login.do" method="post">
+			<table border="1" cellpadding="0" cellspacing="0">
+				<tr>
+					<td bgcolor="orange"><spring:message code="message.user.login.id" /></td>
+					<td><input type="text" name="id" value="${userVO.id }"/></td>
+				</tr>
+				<tr>
+					<td bgcolor="orange"><spring:message code="message.user.login.password" /></td>
+					<td><input type="password" name="password" value="${userVO.password }" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit"
+						value="<spring:message code="message.user.login.loginBtn" />" /></td>
+				</tr>
+			</table>
+		</form>
+	</center>
+</body>
+</html>
+```
+
+
+**브라우저 화면**     
+
+![image](https://user-images.githubusercontent.com/84966961/133197304-054b412f-9189-48d5-93fa-702bd2b324ba.png)
+
+>>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
+
+
+ <br><hr/>
+
+
+<<<<<<< HEAD
 ### 예외처리 뷰페이지 작성
 
 사용자에게 보여줄 페이지를 작성한다.
@@ -244,6 +412,8 @@ login 뷰페이지에 기존 한글로 작성했던 부분을 spring이 properti
  <br><hr/>
 
 
+=======
+>>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
 ### list 뷰페이지 수정
 
 ```jsp
@@ -315,7 +485,10 @@ login 뷰페이지에 기존 한글로 작성했던 부분을 spring이 properti
 
 **브라우저 화면**       
 
+<<<<<<< HEAD
 ![image](https://user-images.githubusercontent.com/84966961/133351232-139a553d-1a82-4185-a87f-a0d391a2ad6d.png)
+=======
+>>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
 
 
 
