@@ -62,53 +62,34 @@ Spring 에서는 이런 예외처리를 하기 위해서
 //				어떤 객체가 필요하면 공통으로 사용하게 됨.
 // pointcut : 공통관심사를 사용할 대상
 //				"com.springbook.view"라는 이 클래스가 사용될 빈들을 지정해준다.
+@ControllerAdvice("com.springbook.view")
 public class CommonExceptionHandler {
-
-	// 단순히 advice설정만 한다고 되지 않기 때문에
-	// 어떤 요청이 들어왔을 때(아마도 위의 포인트컷에서 특정 객체가 생성된다면 발생) 할 것인지
-	// 정하고 동작하도록 해주는 어노테이션을 설정해야한다.
+	
 	@ExceptionHandler(ArithmeticException.class)
-	public ModelAndView handlerArithmeticException(Exception e) {
-		// 메소드 이름은 아무렇게나 해도됨.
-
+	public ModelAndView handleArithmeticException(Exception e) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("exception", e); // 예외에 대한 정보.
-		mav.setViewName("/common/artihmeticError.jsp"); // 예외시 이동할 페이지
-
+		mav.addObject("exception",e);
+		mav.setViewName("/common/arithmeticError.jsp");
 		return mav;
 	}
-<<<<<<< HEAD
-
-	// 예외 연습 1
+	
 	@ExceptionHandler(NullPointerException.class)
-	public ModelAndView handlerNullPointerException(Exception e) {
-		// 메소드 이름 변경 가능
-=======
-
-	// 예외 연습 1
-	@ExceptionHandler(NullPointerException.class)
-	public ModelAndView handlerNullPointerException(Exception e) {
-		// 메소드 이름 변경 가능
-
+	public ModelAndView handleNullPointerException(Exception e) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("exception", e); // 예외에 대한 정보.
-		mav.setViewName("/common/nullPointerError.jsp"); // 예외시 이동할 페이지
-
+		mav.addObject("exception", e);
+		mav.setViewName("/common/nullPointerError.jsp");
 		return mav;
 	}
 
-	// 예외 연습 2
 	@ExceptionHandler(Exception.class)
-	public ModelAndView handlerException(Exception e) {
-
+	public ModelAndView handleException(Exception e) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("exception", e); // 예외에 대한 정보.
-		mav.setViewName("/common/error.jsp"); // 예외시 이동할 페이지
-
+		mav.addObject("exception", e);
+		mav.setViewName("/common/error.jsp");
 		return mav;
 	}
-
 }
+
 ```
 
 
@@ -157,38 +138,9 @@ public class CommonExceptionHandler {
 
 
 ## 다국어 처리
->>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
 
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("exception", e); // 예외에 대한 정보.
-		mav.setViewName("/common/nullPointerError.jsp"); // 예외시 이동할 페이지
 
-<<<<<<< HEAD
-		return mav;
-	}
 
-	// 예외 연습 2
-	@ExceptionHandler(Exception.class)
-	public ModelAndView handlerException(Exception e) {
-
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("exception", e); // 예외에 대한 정보.
-		mav.setViewName("/common/error.jsp"); // 예외시 이동할 페이지
-=======
-### 다국어 페이지 속성 값이 저장된 messageSource_en.properties
-
-다음 사진처럼 properties 파일을 이용하여 resource/message 폴더 내부에 `messageSource_en.properties` 파일을 만들어 저장해준다.
-
-![image](https://user-images.githubusercontent.com/84966961/133181309-3189dcc8-fd21-49a6-94a2-f1d2f44cf048.png)    
->>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
-
-		return mav;
-	}
-
-<<<<<<< HEAD
-}
-```
-=======
 ### 다국어 페이지 속성 값이 저장된 messageSource_ko.properties
 
 한국어는 자동으로 유니코드로 등록되기 때문에 미리 txt에 작성한 다음 properties 파일로 옴겨주도록하자    
@@ -206,8 +158,6 @@ public class CommonExceptionHandler {
 메세지에 대해 스프링이 인지할 수 있도록 매핑해준다.
 
 ![image](https://user-images.githubusercontent.com/84966961/133188964-34a6ff28-e13d-4518-85ea-ac1849141dda.png)
-
-
 
 
 
@@ -275,7 +225,6 @@ login 뷰페이지에 기존 한글로 작성했던 부분을 spring이 properti
  <br><hr/>
 
 
-<<<<<<< HEAD
 ### 예외처리 뷰페이지 작성
 
 사용자에게 보여줄 페이지를 작성한다.
@@ -411,9 +360,6 @@ login 뷰페이지에 기존 한글로 작성했던 부분을 spring이 properti
 
  <br><hr/>
 
-
-=======
->>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
 ### list 뷰페이지 수정
 
 ```jsp
