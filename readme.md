@@ -45,7 +45,8 @@ Learning about basic Spring
     BoardWeb4.3, JDBC Templete, UserDAO, 스프링방식 변환, 검색기능, like 와일드 카드, 파일 업로드 기능,
 18. 20210914 [Lecture18](https://github.com/Moveuk/2021_Spring/blob/main/0914_Lecture18/Lecture18_Summary.md)    
     BoardWeb4.3, 예외 처리, @ControllerAdvice, @ExceptionHandler, 다국어 처리, messageSource_en.properties     
-19. 20210 Lecture19   
+19. 20210915 [Lecture19](https://github.com/Moveuk/2021_Spring/blob/main/0915_Lecture19/Lecture19_Summary.md)    
+    BoardWeb5, 마이바티스, 환경 구성, 기본 세팅, CRUD 기능
 20. 20210 Lecture20    
 21. 20210 Lecture21    
 22. 20210 Lecture22   
