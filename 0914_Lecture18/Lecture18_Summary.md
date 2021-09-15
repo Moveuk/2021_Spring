@@ -219,9 +219,6 @@ login 뷰페이지에 기존 한글로 작성했던 부분을 spring이 properti
 
 ![image](https://user-images.githubusercontent.com/84966961/133197304-054b412f-9189-48d5-93fa-702bd2b324ba.png)
 
->>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
-
-
  <br><hr/>
 
 
