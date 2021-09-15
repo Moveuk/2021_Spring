@@ -485,11 +485,8 @@ login 뷰페이지에 기존 한글로 작성했던 부분을 spring이 properti
 
 **브라우저 화면**       
 
-<<<<<<< HEAD
-![image](https://user-images.githubusercontent.com/84966961/133351232-139a553d-1a82-4185-a87f-a0d391a2ad6d.png)
-=======
->>>>>>> fa14d91abdd3f0acef207034f6cf71f89c0a0509
 
+![image](https://user-images.githubusercontent.com/84966961/133351232-139a553d-1a82-4185-a87f-a0d391a2ad6d.png)
 
 
 
