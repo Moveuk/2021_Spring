@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 루트에서 위치를 찾고 db에 대한 정보를 받아오는 태그 -->
+	<properties resource="database.properties"></properties>
+
+	<!-- 써도되고 안써도되는 태그 -->
+	<typeAliases>
+		<!-- select를 리턴 받기 위한 타입 -->
+		<!-- board-mapping.xml의 board에 매핑함 -->
+		<typeAlias alias="board" type="com.springbook.biz.board.BoardVO" />
+	</typeAliases>
+
+	<!-- db 정보 정리 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 기존 커밋과 롤백방식으로 트랜잭션을 하겠다는 태그 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 마이바티스는 JDBC 풀을 기본으로 제공해줌. -->
+			<!-- 따라서 commons-dbcp dependency를 붙일 필요가 없음. -->
+			<dataSource type="POOLED">
+				<!-- name은 마이바티스에서는 driver, value는 프로퍼티에 작성한 값 -->
+				<property name="driver" value="${jdbc.driverClassName}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 이 db에 sql문 양식을 매핑시켜야함. -->
+	<mappers>
+		<mapper resource="mapping/board-mapping.xml"/>
+	</mappers>
+</configuration>	
