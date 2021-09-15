@@ -28,18 +28,13 @@ public class BoardController {
 		System.out.println("글 등록 처리");
 		
 		MultipartFile uploadFile = vo.getUploadFile();
-		
-		// 넣어야 할 파일이 존재하면 실행.
-		if(!uploadFile.isEmpty()) {
-			// 실제 업로드한 파일의 이름
+		if(!uploadFile.isEmpty()){
 			String fileName = uploadFile.getOriginalFilename();
-			// 원하는 폴더로 전송.
-			uploadFile.transferTo(new File("c:/lib/workspace/2021_Spring/0909_Lecture17/BoardWeb4.3/uploadFileLocation" + fileName));
+			uploadFile.transferTo(new File("D:/" + fileName));
 		}
 		
 		boardService.insertBoard(vo);
-		
-		return "redirect:getBoardList.do";
+		return "getBoardList.do";
 	}
 
 	@RequestMapping("/updateBoard.do")
@@ -71,11 +66,11 @@ public class BoardController {
 	
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model) {
-		// 검색조건이 없을시 기본값은 제목
-		if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
-		// 검색내용이 없을시 기본값은 빈값
-		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
 		
+		if(vo.getSearchCondition() == null) 
+			vo.setSearchCondition("TITLE");
+		if(vo.getSearchKeyword() == null)
+			vo.setSearchKeyword("");
 		
 		model.addAttribute("boardList", boardService.getBoardList(vo)); // Model 정보 저장
 		return "getBoardList.jsp";  //View 이름 리턴

@@ -4,6 +4,7 @@
 <%@page import="com.springbook.biz.board.impl.BoardDAO"%>
 <%@page import="java.util.*" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <%
 	/* List<BoardVO> boardList = (List)session.getAttribute("boardList"); */
@@ -16,9 +17,9 @@
 </head>
 <body>
 	<center>
-		<h1>글목록</h1>
+		<h1><spring:message code="message.board.list.mainTitle"/></h1>
 		<h3>
-			${userName }님! 게시판에 오신걸 환영합니다... <a href="logout.do">Log-out</a>
+			${userName }<spring:message code="message.board.list.welcomeMsg"/>... <a href="logout.do">Log-out</a>
 		</h3>
 		
 		
@@ -32,18 +33,24 @@
 							<option value="${option.value }">${option.key }
 						</c:forEach>	
 					</select> 
-					<input name="searchKeyword" type="text" /> <input type="submit" value="검색" /></td>
+					<input type="submit" value="<spring:message code="message.board.list.search.condition.btn"/>"/>
+					</td>
 				</tr>
 			</table>
 		</form>
 		
 		<table border=1 cellpadding=0 cellspacing=0 width=700>
 			<tr>
-				<th bgcolor="orange" widht=100>번호</th>
-				<th bgcolor="orange" widht=100>제목</th>
-				<th bgcolor="orange" widht=100>작성자</th>
-				<th bgcolor="orange" widht=100>등록일</th>
-				<th bgcolor="orange" widht=100>조회수</th>
+				<th bgcolor="orange" width="100">
+				<spring:message	code="message.board.list.table.head.seq" /></th>
+				<th bgcolor="orange" width="200">
+				<spring:message code="message.board.list.table.head.title" /></th>
+				<th bgcolor="orange" width="150">
+				<spring:message code="message.board.list.table.head.writer" /></th>
+				<th bgcolor="orange" width="150">
+				<spring:message code="message.board.list.table.head.regDate" /></th>
+				<th bgcolor="orange" width="100">
+				<spring:message code="message.board.list.table.head.cnt" /></th>
 			</tr>
 			<c:forEach items="${boardList }" var="board">
 			<tr>
@@ -59,7 +66,7 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<a href="insertBoard.jsp">새글 등록</a>
+		<br> <a href="insertBoard.jsp"><spring:message code="message.board.list.link.insertBoard"/></a>
 	</center>
 </body>
 </html>
