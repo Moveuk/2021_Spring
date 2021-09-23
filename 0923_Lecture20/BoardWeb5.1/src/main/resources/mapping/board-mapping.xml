@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 마이바티스에 사용할 db sql 문을 저장하는데 사용하는 xml 파일이다. -->
+<mapper namespace = "BoardDAO">
+
+	<insert id="insertBoard">
+		<![CDATA[
+		insert into board1(seq,title,writer,content)
+		values((select nvl(max(seq), 0)+1 from board1),#{title},#{writer},#{content})
+		]]>
+	</insert>
+	
+	<update id="updateBoard">
+		<![CDATA[
+		update board1 set title=#{title}, content=#{content} where seq=#{seq}
+		]]>
+	</update>
+	
+	<delete id="deleteBoard">
+		<![CDATA[
+		delete board1 where seq=#{seq}
+		]]>
+	</delete>
+	
+	<select id="getBoard" resultType="board">
+		<![CDATA[
+		select * from board1 where seq = #{seq}
+		]]>
+	</select>
+	
+	<select id="getBoardList" resultMap="boardResult">
+		<![CDATA[
+		select * from board1
+		where title like '%'||#{searchKeyword}||'%'
+		order by seq desc
+		]]>
+	</select>
+	
+</mapper>

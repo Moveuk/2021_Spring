@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardDAO">
+
+	<resultMap type="board" id="boardResult">
+		<id property="seq" column="SEQ" />
+		<result property="title" column="TITLE" />
+		<result property="writer" column="WRITER" />
+		<result property="content" column="CONTENT" />
+		<result property="regDate" column="REGDATE" />
+		<result property="cnt" column="CNT" />
+	</resultMap>
+
+	<insert id="insertBoard">
+		<![CDATA[
+		insert into board1(seq,title,writer,content)
+		values((select nvl(max(seq), 0)+1 from board1),#{title},#{writer},#{content})
+		]]>
+	</insert>
+
+	<update id="updateBoard">
+		<![CDATA[
+		update board1 set title=#{title}, content=#{content} where seq=#{seq}
+		]]>
+	</update>
+
+	<delete id="deleteBoard">
+		<![CDATA[
+		delete board1 where seq=#{seq}
+		]]>
+	</delete>
+
+	<select id="getBoard" resultType="board">
+		<![CDATA[
+		select * from board1 where seq = #{seq}
+		]]>
+	</select>
+
+	<select id="getBoardList" resultMap="boardResult">
+		select * from board1
+		where 1=1
+		<if test="searchCondition == 'TITLE'">
+			and title like '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+			and content like '%'||#{searchKeyword}||'%'
+		</if>
+		order by seq desc
+	</select>
+	<!-- 1=1 : 모든 조건 검색 
+		 다이나믹 sql : 마이바티스의 기능으로 JSTL처럼 태그를 걸어 sql자체에 조건을 선택할 수 있도록 만들 수 있다.-->
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<properties resource="db.properties"></properties>
+	
+	<typeAliases>
+		<typeAlias alias="board" type="com.springbook.biz.board.BoardVO"/>
+	</typeAliases>
+	
+<!-- 	전체에서 db에 붙을 수 있도록 마이바티스 코드를 applicationContext.xml로 옴겨준다. -->
+<!-- 	<environments default="development"> -->
+<!-- 		<environment id="development"> -->
+<!-- 			<transactionManager type="JDBC"></transactionManager> -->
+<!-- 			<dataSource type="POOLED"> -->
+<!-- 				<property name="driver" value="${jdbc.driverClassName}"/> -->
+<!-- 				<property name="url" value="${jdbc.url}" /> -->
+<!-- 				<property name="username" value="${jdbc.username}" /> -->
+<!-- 				<property name="password" value="${jdbc.password}" /> -->
+<!-- 			</dataSource> -->
+<!-- 		</environment> -->
+<!-- 	</environments> -->
+	
+	<mappers>
+		<mapper resource="mappings/board-mapping.xml"/>
+	</mappers>
+</configuration>
