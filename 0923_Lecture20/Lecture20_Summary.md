@@ -1,6 +1,6 @@
 # Lecture20 BoardWeb5.1
 
-Key Word : BoardWeb5.1, 마이바티스, 환경 구성, 기본 세팅, CRUD 기능      
+Key Word : BoardWeb5.1, BoardWeb5.2, 마이바티스, JDBC 이용 방법 2가지         
 
 <hr/>
 
