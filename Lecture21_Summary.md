@@ -1,6 +1,6 @@
 # Lecture21 Springboot 시작 전 개념
 
-Key Word : Socket           
+Key Word : Socket, HTTP, Tomcat, Web Server, 서블릿 컨테이너, web.xml            
 
 <hr/>
 
@@ -79,43 +79,33 @@ http 통신 중에 Client 측에서 JSP에 대한 요청이 들어온다면 웹 
 ![image](https://user-images.githubusercontent.com/84966961/142862387-c5fc928f-df24-4f57-9fd8-d66e282d6d2d.png)
 
 
+### 🏁 URL과 URI 의 차이
 
+ -> 스프링에서는 URL(Location)을 이용한 .html, .css, .png 같은 파일을 요청할 수 없다.
+ 
+ 
+ **URL(Location)** : 자원 접근 - ex) http://naver.com/a.png    
+ **URI(Identifier)** : 식별자 접근 - ex) http://naver.com/picture/a    
+    
+ -> URI는 특정한 파일 요청을 할 수 없으므로 요청시에는 무조건 **자바**를 거친다. 무조건 **자바**를 거치므로 톰켓을 거친다고 보면된다.
+ 
+
+<br><hr>
+
+### request와 response
+
+![image](https://user-images.githubusercontent.com/84966961/142950734-3ee45ab6-749b-429f-af84-33da0531646e.png)
+
+![image](https://user-images.githubusercontent.com/84966961/142955054-085d0806-d44c-4478-8d00-72041e27236d.png)
+
+![image](https://user-images.githubusercontent.com/84966961/142955058-f5384c91-200b-407e-8ca7-65183574c4d9.png)
 
 
 <br><hr>
 
+## web.xml    
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br><hr>
 <br><hr>
 <br><hr>
