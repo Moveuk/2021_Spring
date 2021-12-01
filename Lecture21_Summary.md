@@ -251,17 +251,17 @@ Client -> webserver -> Tomcat(서블릿컨테이너) -> DispatcherServlet
 
 ![image](https://user-images.githubusercontent.com/84966961/144286178-8069ad38-a669-41eb-9784-2b6632cdd807.png)
 
-![image](https://user-images.githubusercontent.com/84966961/144283501-ec188928-8f16-4811-b41f-817ef09ac362.png)
-출처 : https://javannspring.tistory.com/231
+![image](https://user-images.githubusercontent.com/84966961/144283501-ec188928-8f16-4811-b41f-817ef09ac362.png)   
+출처 : https://javannspring.tistory.com/231   
 
 
- ① Tomcat(WAS)에 의하여 web.xml를 로딩
- ② ContextLoaderListener 로딩됨(Servlet 생명 주기 관리)
- ③ ContextLoaderListener는 root-context.xml을 읽어와서 공통 요소들을 로드시킴
- ④ ServiceImpl들이 실행되고 DAO, VO들이 관리됨(root는 Service, Repository 등의 어노테이션을 관리하기 때문)
- ⑤ request 요청이 오게됨 -> 여기서부터 실제 http 통신
- ⑥ 요청에 의해서 첫 DispatcherServlet이 생기고 두번째 스프링 컨테이너를 만듬
- ⑦ DispatcherServlet은 Servlet-context.xml 을 로딩하여 web에 관련된 파일을 로드함
+ ① Tomcat(WAS)에 의하여 web.xml를 로딩   
+ ② ContextLoaderListener 로딩됨(Servlet 생명 주기 관리)   
+ ③ ContextLoaderListener는 root-context.xml을 읽어와서 공통 요소들을 로드시킴   
+ ④ ServiceImpl들이 실행되고 DAO, VO들이 관리됨(root는 Service, Repository 등의 어노테이션을 관리하기 때문)   
+ ⑤ request 요청이 오게됨 -> 여기서부터 실제 http 통신   
+ ⑥ 요청에 의해서 첫 DispatcherServlet이 생기고 두번째 스프링 컨테이너를 만듬   
+ ⑦ DispatcherServlet은 Servlet-context.xml 을 로딩하여 web에 관련된 파일을 로드함   
  ⑧ request에 따라 컨트롤러가 실행됨.     
   
 ### Bean Factory
