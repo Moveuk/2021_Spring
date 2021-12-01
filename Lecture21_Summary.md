@@ -1,4 +1,4 @@
-# Lecture21 Springboot 시작 전 개념
+# Lecture21 Springboot 시작 전 기본 개념
 
 Key Word : Socket, HTTP, Tomcat, Web Server, 서블릿 컨테이너, web.xml            
 
@@ -193,6 +193,17 @@ JSP 에서는 다음과 같이 html의 타입을 표시했었음.
  
  DispatcherServlet = FrontController 패턴 + RequestDispatcher 
  
+ ```
+ Dispatch 는 "보내다"라는 뜻
+ 
+ HTTP 프로토콜을 통해 오는 모든 요청을 가장 먼저 받아 적합한 컨트롤러에 위임해주는 프론트 컨트롤러(Front Controller)
+
+----------
+HTTP 요청의 흐름
+
+Client -> webserver -> Tomcat(서블릿컨테이너) -> DispatcherServlet
+ ```
+ 
  DispatcherServlet이 자동 생성 될 때 대부분 필터인 수 많은 객체(IoC : 제어의 역전)들이 생성됨. 해당 필터들은 내가 직접 등록할 수 도 있고 기본적으로 필요한 필터들은 자동 등록 되어짐. 
 
 <br><hr>
@@ -201,16 +212,116 @@ JSP 에서는 다음과 같이 html의 타입을 표시했었음.
 
  여기부터는 스프링에 대한 이야기이다. Apache는 정적인 data를 제공하는 웹서버이지만 Spring이 관리하게 되면 정적인 자원을 요청할 수 없고 전부 자바 파일로 Servlet을 요청하여 처리하게 된다.
  
+ DispatcherServlet의 역할은 주소 분배 역할을 한다고 언급했었다. 주소 분배 역할을 하기 위해서는 해당 class들이 메모리에 들어있어야 하는데(new 하여 객체 생성) 본인이 호출해야하는 class 파일을 실행시켜준다.
  
+ 객체에는 Static한 메소드들은 메모리에 미리 로드되어 있고 이외에는 객체 생성과 소멸의 주기를 가지고 있다.    
+ Static의 특성을 사용해서 미리 사용될 class들이나 메소드들을 로드시켜놓으면 좋겠지만 보통 웹서버는 작게는 수 십명 혹은 그 이상의 수 많은 인원이 사용하게 된다.   
+ 이 때 Static한 파일을 사용하게 되면 효율은 좋겠지만 충돌날 위험이 있다.   
+ 이 때문에 대부분 이 클래스들은 Static 한 상태가 아닌 new를 하여 필요할 때 만들어 사용하고 소멸시켜주어야 한다.    
  
+ 하지만, Spring은 IoC(제어의 역전)를 통해서 개발자가 객체를 new하여 생성하는 것이 아닌 DispatcherServelet이 컴포넌트 스캔을 통하여 객체를 관리해준다.(src 내부의 파일-Springboot 에서 부터는 내부 전부를 스캔함 / Spring에서는 스캔 영역을 정해줄 수 있었음.)
+
+ DispatcherServelet이 객체를 관리하는 방법은 @ annotation을 사용한다. 예를들어 @Controller, @RestController, @Configuration, @Repository, @Service, @Component 등의 annotation을 사용하여 인식하고 관리하게 된다.
+
+ 따라서 개발자는 스프링의 IoC 개념을 사용하기 위해서 공부해야하는 것은 각 annotation의 사용법이다.(직접 생성한 객체를 가리키는 레퍼런스 변수를 관리하는 것이 아닌 대리로 관리할 DispathcerServlet에게 알려주기 위해서)
  
+ -> 이 후 관리되어지는 객체들은 DI(의존성 주입)에 의해서 사용할 수 있으므로 주소 자체를 몰라도 된다. ApplcationContext에 접근하여 필요한 객체를 가져오면 되기 때문이다.
+
+### ApplicationContext의 두 가지 종류
+
+- root-applicationContext : **ContextLoaderListener**에 의해 실행됨   
+
+-> root : 최상단의 applicationContext를 뜻함
+
+**-> Servlet-applicaitonContext이 관리하는 어노테이션을 제외한 Service, Repository 등을 스캔하고 DB와 관련된 객체를 생성함.(스캔: 메모리 로딩)**
+
+- Servlet-applicaitonContext : **DispatcherServlet**에 의해 실행됨 
+
+-> ViewResolver, Intercepter, MultipartResolver 객체를 생성하고 웹과 관련된 어노테이션 Controller, RestController를 스캔함.
+-> 이 파일들은 DispatcherServlet에 의해 실행된다.
+
+**-> 즉 web과 관련된 정보들을 가지고 있으며 web과 관련된 내용만 바라보고 메모리에 띄우며 관리한다.**
+
+
+### ContextLoaderListener
+
+ ContextLoaderListener 는 **공통 요소 관리**를 하기 위한 리스너이다. root_AppliacationContext 파일을 읽어서 DB 파일과 같이 공통적으로 쓰여야 하는 파일들을 관리하게 되고 그 이후 DispatcherServlet이 띄워지기 때문에 DB에서 이 후 객체들을 관리할 수는 없다. 하지만 DispatcherServlet이 관리중인 Class들은 맨처음 생성되어 메모리에 올라간 공통 요소들을 사용하여 작업할 수 있으므로 DB와 관련된 객체들을 사용할 수 있다.
  
+ 모든 쓰레드가 단 하나의 요소를 공통적으로 사용하는 것들을 ContextLoaderListener가 맨처음 띄우게 된다.
+
+![image](https://user-images.githubusercontent.com/84966961/144286178-8069ad38-a669-41eb-9784-2b6632cdd807.png)
+
+![image](https://user-images.githubusercontent.com/84966961/144283501-ec188928-8f16-4811-b41f-817ef09ac362.png)
+출처 : https://javannspring.tistory.com/231
 
 
+ ① Tomcat(WAS)에 의하여 web.xml를 로딩
+ ② ContextLoaderListener 로딩됨(Servlet 생명 주기 관리)
+ ③ ContextLoaderListener는 root-context.xml을 읽어와서 공통 요소들을 로드시킴
+ ④ ServiceImpl들이 실행되고 DAO, VO들이 관리됨(root는 Service, Repository 등의 어노테이션을 관리하기 때문)
+ ⑤ request 요청이 오게됨 -> 여기서부터 실제 http 통신
+ ⑥ 요청에 의해서 첫 DispatcherServlet이 생기고 두번째 스프링 컨테이너를 만듬
+ ⑦ DispatcherServlet은 Servlet-context.xml 을 로딩하여 web에 관련된 파일을 로드함
+ ⑧ request에 따라 컨트롤러가 실행됨.     
+  
+### Bean Factory
 
+ 이외에도 필요한 객체를 Bean Factory에 등록하여 사용할 수 있음. 초기에 등록하는 것이 아닌 `getBean()`이라는 메소드를 통하여 호출하여 메모리에 로드할 수 있다. 이것 또한 IoC이다.
+ 
+ -> 이것이 lazy-loading(필요할 때 호출하여 로딩을 늦게하는 것)이다.
+ 
+ ```java
+@Configuration
+Class A {
 
+   @Bean
+   객체 메소드() {
+      ~~~~
+      
+      return 객체();
+   {
 
+}
+```
 
+<br><hr>
 
+## 응답(Response)
+
+ get 요청 -> https://localhost:8181/post/1
+ 
+ URI에 의한 요청이 오면 적절한 컨트롤러를 찾아 실행함. 이 때 요청에 의한 답으로 **Data** 혹은 **html** 파일을 응답하게됨.
+ 
+ html의 경우에는 ViewResolver가 관여하게 되며, Data는 MessageConverter 가 작동하고 기본 메세지 컨버팅 전략은 json이 디폴트이다.
+
+```
+ViewResolver란?
+
+만약 .jsp 파일을 요청하게 되면
+
+prefix : jsp파일의 경로 주소
+surfix : .jsp
+
+정보를 붙여 String(단순히 return 값으로 "jsp파일명"을 사용할 수 있게 됨) 에 대한 값을 리턴할 수 있도록 리턴해주는 기능을 한다.
+
+만약 ViewResolver가 관여하지 않게 되면 return 값으로 만약 "hello"가 사용되었을시 그냥 "hello"라는 데이터가 전송되게 된다.
+```
+```
+MessageConverter
+
+ ViewResolver와는 달리 특정 메소드 앞에 @ResponseBody라는 어노테이션을 붙이게 되면 이를 단순한 Data로 보게 된다.
+ 
+ 만약 User라는 Entity가 존재한다고 하자.
+ 
+ User {
+ int id = 1;
+ String name = moveuk;
+ }
+ 
+ Hello()라는 메소드의 리턴을 User로 할 때 스프링이 MessageConverter를 작동시켜 JSON을 디폴트로 컨버팅하여 DATA를 보내게 된다.
+ 
+ MessageConverter는 현재는 Jackson이라는 라이브러리를 사용함. Jackson이라고 부르지 않은 이유는 미래의 더 나은 중간 데이터 포멧이 생기게 되면 추상화의 개념으로서 단순 교체를 하기 위함임.
+ 
+```
 
 <br><hr>
