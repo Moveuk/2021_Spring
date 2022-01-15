@@ -49,6 +49,8 @@ Learning about basic Spring
     BoardWeb5, 마이바티스, 환경 구성, 기본 세팅, CRUD 기능
 20. 20210923 [Lecture20](https://github.com/Moveuk/2021_Spring/blob/main/0923_Lecture20/Lecture20_Summary.md)      
     BoardWeb5.1, BoardWeb5.2, 마이바티스, JDBC 이용 방법 2가지
+21. 20211000 [Lecture21](https://github.com/Moveuk/2021_Spring/blob/main/Lecture21_Summary.md)      
+    http, socket, stateful, steteless, springboot 등의 개념 정리
 	
 	
 ## End
