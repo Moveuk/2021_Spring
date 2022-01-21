@@ -53,4 +53,9 @@ Learning about basic Spring
     http, socket, stateful, steteless, springboot 등의 개념 정리
 	
 	
+
+## < 참고 >
+
+[리액트와 스프링 개발환경에 대한 글(블로그)](https://sundries-in-myidea.tistory.com/71)
+
 ## End
