@@ -57,5 +57,6 @@ Learning about basic Spring
 ## < 참고 >
 
 [리액트와 스프링 개발환경에 대한 글(블로그)](https://sundries-in-myidea.tistory.com/71)
+[서블릿 컨테이너와 스프링부트의 동작 원리(블로그)](https://wrkbr.tistory.com/520)
 
 ## End
